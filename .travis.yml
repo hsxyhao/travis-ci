@@ -13,6 +13,4 @@ before_install:
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
 after_success:
 - chmod 600 ~/.ssh/id_rsa
-- cd ~/travis-ci/
-- git pull
-- mvn package
+- ssh travis@39.108.173.101 -o StrictHostKeyChecking=no 'cd ~/travis-ci/ && git pull && mvn package'   #使用ssh连接服务器
