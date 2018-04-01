@@ -7,6 +7,9 @@ script:
 - mvn package -Dmaven.test.skip=true
 after_script:
   - pwd
+env:
+  global:
+    secure: *********
 addons:
   ssh_known_hosts:
   - 39.108.173.101 #受信主机，你的Linux服务器ip
