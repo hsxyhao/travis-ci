@@ -13,7 +13,4 @@ before_install:
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
 - chmod 600 ~/.ssh/id_rsa
 after_success:
-- mvn package -Dmaven.test.skip=true
-- pwd
-- ls
-- scp ./target/travis-ci.war travis@39.108.173.101:~
+- ssh travis@39.108.173.101 -o StrictHostKeyChecking=no 'cd ~/travis-ci && git pull && mvn package'
