@@ -18,4 +18,4 @@ after_success:
 - mkdir test
 - echo 'test'
 - ll -a
-- ssh travis@39.108.173.101 -o StrictHostKeyChecking=no
+- ssh travis@39.108.173.101 -o StrictHostKeyChecking=no 'cd ~/travis-ci && git pull'
