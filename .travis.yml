@@ -5,8 +5,6 @@ install:
 - mvn install -DskipTests=true -Dmaven.javadoc.skip=true
 script:
 - mvn package -Dmaven.test.skip=true
-- pwd
-- ll -a
 addons:
   ssh_known_hosts:
   - 39.108.173.101
@@ -17,3 +15,4 @@ before_install:
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
 - chmod 600 ~/.ssh/id_rsa
 after_success:
+- ssh travis@39.108.173.101 -o StrictHostKeyChecking=no 'cd ~/travis-ci && git pull && mvn package && mv ./target/travis-ci.war ~/home/travis'
